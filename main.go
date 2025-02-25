@@ -84,7 +84,7 @@ func getOrCreateAssistant(callerPhoneNumber, vapiPhoneNumber string) VAPIAssista
 		oaiMessages := []openai.ChatCompletionMessage{
 			{
 				Role:    openai.ChatMessageRoleSystem,
-				Content: "You are a prompt engineer. Generate a system prompt for an AI assistant based on this description. The prompt should be concise and clear.",
+				Content: "You are a prompt engineer. Generate a system prompt for an assistant based on this description. The prompt should be concise and clear.",
 			},
 			{
 				Role:    openai.ChatMessageRoleUser,
@@ -106,7 +106,7 @@ func getOrCreateAssistant(callerPhoneNumber, vapiPhoneNumber string) VAPIAssista
 
 		// Get the generated prompt and append transfer instructions
 		prompt := response.Choices[0].Message.Content + fmt.Sprintf(`
-		For your first message, introduce yourself and state your purpose. Be concise and clear.
+		For your first message, introduce yourself and state your purpose. Be very brief and clear.
 		Then, the caller will describe an assistant that they want to speak to. Call the createAssistant tool with the description.
 		After the createAssistant tool call is successful, transfer the caller to %s.
 		`, vapiPhoneNumber)
