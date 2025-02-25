@@ -1,0 +1,1 @@
+## VAPI without Squads
